@@ -1,0 +1,11 @@
+<h3>Nuevo producto</h3>
+
+<%= form_for :product, url: products_path do |f| %>
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <%= f.submit "Crear nuevo producto", class: 'btn btn-primary' %>
+  <%= link_to "Cancelar", :back, {:class=>"btn btn-default"} %>
+<% end %>
