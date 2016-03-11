@@ -6,6 +6,9 @@
     <%= f.text_field :name, autofocus: true, class: 'form-control' %>
   </div>
 
+  <%= f.hidden_field :from_edit, :value => @from_edit %>
+  <%= f.hidden_field :list, :value => @list %>
+
   <%= f.submit "Crear nuevo producto", class: 'btn btn-primary' %>
   <%= link_to "Cancelar", :back, {:class=>"btn btn-default"} %>
 <% end %>

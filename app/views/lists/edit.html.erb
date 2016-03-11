@@ -1,4 +1,4 @@
-<h3 class='title'><%= @list.name %></h3>
+<h3 class='title'>Editando <%= @list.name %></h3>
 <%= hidden_field_tag 'list_id', @list.id %>
 <% @products.each do |product| %>
   <% included = @list.items.map(&:product_id).include?(product.id) %>
@@ -33,3 +33,8 @@
     </div>
   </div>
 <% end %>
+
+<p>
+  <%= link_to "Crear producto", new_product_path(from_edit: true, list: @list), class: 'btn btn-primary' %>
+  <%= link_to "Volver", :back, class: 'btn btn-default' %>
+</p>
