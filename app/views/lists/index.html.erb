@@ -1,4 +1,8 @@
-<h3>Listas</h3>
+<h3 class='title'>Listas de la compra</h3>
 <% @lists.each do |list| %>
-  <p><%= list.name %></p>
+  <div class='list'>
+    <div class='col-xs-12'>
+      <%= link_to list.name, list %>
+    </div>
+  </div>
 <% end %>

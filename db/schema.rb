@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160310124005) do
+ActiveRecord::Schema.define(version: 20160310155003) do
+
+  create_table "items", force: :cascade do |t|
+    t.integer  "quantity",   default: 1,     null: false
+    t.boolean  "collected",  default: false, null: false
+    t.string   "notes",      default: ""
+    t.integer  "list_id"
+    t.integer  "product_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "items", ["list_id", "product_id"], name: "index_items_on_list_id_and_product_id", unique: true
+  add_index "items", ["list_id"], name: "index_items_on_list_id"
+  add_index "items", ["product_id"], name: "index_items_on_product_id"
 
   create_table "lists", force: :cascade do |t|
     t.string   "name",       default: "Lista de la Compra", null: false

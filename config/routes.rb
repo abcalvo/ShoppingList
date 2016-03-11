@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   resources :lists
   resources :products
 
+  post 'items' => 'items#create'
+  delete 'items' => 'items#destroy'
+
+  post 'items/collected' => 'items#mark_as_collected'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

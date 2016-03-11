@@ -1,0 +1,35 @@
+<h3 class='title'><%= @list.name %></h3>
+<%= hidden_field_tag 'list_id', @list.id %>
+<% @products.each do |product| %>
+  <% included = @list.items.map(&:product_id).include?(product.id) %>
+  <div class='item'>
+    <div class='input-group'>
+      <%= hidden_field_tag 'product_id[]', product.id %>
+
+
+        <div class="col-xs-7">
+          <label>
+            <%= check_box_tag product.id, product.name, included, class: 'product_checkbox' %>
+            <%= h product.name %>
+          </label>
+        </div>
+        <div class="col-xs-5">
+          <div class="input-group">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default decrease-quantity" <%= disable_decrease_button(included, @list.items.find_by_product_id(product.id)) %>>
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+            </div>
+            <%= text_field_tag 'quantity',
+              (included ? @list.items.find_by_product_id(product.id).quantity : '1'),
+              class: 'form-control' %>
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default increase-quantity">
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+<% end %>

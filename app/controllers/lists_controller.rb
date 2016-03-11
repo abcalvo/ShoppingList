@@ -10,6 +10,11 @@ class ListsController < ApplicationController
       Time.new.strftime('%d/%m/%Y')
   end
 
+  def edit
+    @list = current_user.lists.find_by_id(params[:id])
+    @products = current_user.products.order(name: :asc)
+  end
+
   def create
     @list = List.create_new_list(list_params, current_user)
 
