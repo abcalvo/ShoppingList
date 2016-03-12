@@ -36,5 +36,5 @@
 
 <p>
   <%= link_to "Crear producto", new_product_path(from_edit: true, list: @list), class: 'btn btn-primary' %>
-  <%= link_to "Volver", :back, class: 'btn btn-default' %>
+  <%= link_to "Volver", list_path(@list), class: 'btn btn-default' %>
 </p>
