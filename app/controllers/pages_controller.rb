@@ -1,7 +1,11 @@
 class PagesController < ApplicationController
   def index
     if user_signed_in? then
-      redirect_to list_path(List.last)
+      if current_user.lists.count > 0 then
+        redirect_to list_path(List.last)
+      else
+        redirect_to new_list_path
+      end
     end
   end
 end

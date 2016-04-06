@@ -1,0 +1,14 @@
+<h3>Editar producto</h3>
+
+<%= form_for :product, url: product_path(@product), method: :patch do |f| %>
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <%= f.hidden_field :from_edit, :value => @from_edit %>
+  <%= f.hidden_field :list, :value => @list %>
+
+  <%= f.submit "Guardar producto", class: 'btn btn-primary' %>
+  <%= link_to "Cancelar", :back, {:class=>"btn btn-default"} %>
+<% end %>
