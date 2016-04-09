@@ -2,18 +2,18 @@
 <%= hidden_field_tag 'list_id', @list.id %>
 <% @products.each do |product| %>
   <% included = @list.items.map(&:product_id).include?(product.id) %>
-  <div class='item'>
+  <div class='item item-data col-sm-6 col-md-4'>
     <div class='input-group'>
       <%= hidden_field_tag 'product_id[]', product.id %>
 
 
-        <div class="col-xs-7">
+        <div class="col-xs-6">
           <label>
             <%= check_box_tag product.id, product.name, included, class: 'product_checkbox' %>
             <%= h product.name %>
           </label>
         </div>
-        <div class="col-xs-5">
+        <div class="col-xs-6">
           <div class="input-group">
             <div class="input-group-btn">
               <button type="button" class="btn btn-default decrease-quantity" <%= disable_decrease_button(included, @list.items.find_by_product_id(product.id)) %>>
@@ -34,7 +34,7 @@
   </div>
 <% end %>
 
-<p>
+<p class='col-xs-12'>
   <%= link_to "Crear producto", new_product_path(from_edit: true, list: @list), class: 'btn btn-primary' %>
   <%= link_to "Volver", list_path(@list), class: 'btn btn-default' %>
 </p>

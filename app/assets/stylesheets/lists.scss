@@ -10,6 +10,18 @@
     padding-bottom: 2em;
 }
 
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+  div.item:nth-child(2n+1) {
+    clear: both;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  div.item:nth-child(3n) {
+    clear: both;
+  }
+}
+
 .list {
   @extend .item;
 }

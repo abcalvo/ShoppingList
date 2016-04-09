@@ -48,7 +48,7 @@ $(document).on('focusout', '#notes', function(){
 });
 
 function extractData(element) {
-  var item = $(element).closest('.item');
+  var item = $(element).closest('.item-data');
   var product_id = $(item).find('#product_id_').val();
   var list_id = $('#list_id').val();
   var quantity = $(item).find('#quantity').val();
@@ -113,12 +113,12 @@ function toggleCollected(data) {
 }
 
 function decreaseQuantity(element) {
-  var item = $(element).closest('.item');
+  var item = $(element).closest('.item-data');
   decrease($(item).find('#quantity'));
 }
 
 function increaseQuantity(element) {
-  var item = $(element).closest('.item');
+  var item = $(element).closest('.item-data');
   increase($(item).find('#quantity'));
 }
 
@@ -131,7 +131,7 @@ function increase(quantity){
 }
 
 function checkIfQuantityIsOne(element) {
-  var item = $(element).closest('.item');
+  var item = $(element).closest('.item-data');
   var quantity = parseInt($(item).find('#quantity').val());
   if (quantity === 1) {
     $(item).find('.decrease-quantity').prop('disabled', true);

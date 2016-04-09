@@ -5,7 +5,7 @@
   <table class='table-striped'>
     <tbody>
       <% @list.items.each do |item| %>
-      <tr class='item'>
+      <tr class='item-data col-xs-12 col-sm-6 col-md-4'>
         <%= hidden_field_tag 'product_id[]', item.product.id %>
         <td class='col-xs-12'>
           <label class='item-in-list <%= item.collected ? 'crossed-out' : '' %>'>
@@ -13,7 +13,7 @@
             <%= h item.product.name %>
           </label>
         </td>
-        <td class='item-in-list'><%= item.quantity %></td>
+        <td class='item-in-list col-xs-1'><%= item.quantity %></td>
       </tr>
       <% end %>
     </tbody>
