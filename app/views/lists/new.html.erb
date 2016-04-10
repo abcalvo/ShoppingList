@@ -3,7 +3,7 @@
 <%= form_for :list, url: lists_path do |f| %>
   <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name, autofocus: true, class: 'form-control', value: @default_list_name %>
+    <%= f.text_field :name, autofocus: true, autocomplete: :off, class: 'form-control', value: @default_list_name %>
   </div>
 
   <%= f.submit "Crear nueva lista de la compra", class: 'btn btn-primary' %>
