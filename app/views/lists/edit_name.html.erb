@@ -1,0 +1,11 @@
+<h3 class='title'>Nueva lista de la compra</h3>
+
+<%= form_for :list, url: edit_list_name_path do |f| %>
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <%= f.submit "Guardar nuevo nombre", class: 'btn btn-primary' %>
+  <%= link_to "Cancelar", :back, {:class=>"btn btn-default"} %>
+<% end %>
