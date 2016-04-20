@@ -38,16 +38,11 @@ class ListsController < ApplicationController
     @list.marked_as_default_at = Time.now
 
     if @list.save
-      respond_to do |format|
-        format.html { redirect_to edit_list_path(@list) }
-        format.json { render json: {status: 'ok'} }
-      end
+      flash[:info] = 'Marcada lista de la compra como lista por defecto'
+      redirect_to edit_list_path(@list)
     else
-      respond_to do |format|
-        format.html { flash.now[:warning] = 'Error añadiendo artículo a la lista de la compra'
-          redirect_to edit_list_path(@list) }
-        format.json { render json: {status: 'error', message: 'Error añadiendo artículo a la lista de la compra'} }
-      end
+      flash.now[:warning] = 'Error al marcar lista de la compra como lista por defecto'
+      redirect_to edit_list_path(@list)
     end
   end
 
