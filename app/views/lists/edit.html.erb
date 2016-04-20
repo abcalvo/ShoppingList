@@ -34,7 +34,9 @@
   </div>
 <% end %>
 
-<p class='col-xs-12'>
-  <%= link_to "Crear producto", new_product_path(from_edit: true, list: @list), class: 'btn btn-primary' %>
-  <%= link_to "Volver", list_path(@list), class: 'btn btn-default' %>
-</p>
+<footer class="footer navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <p><%= link_to "Crear producto", new_product_path(from_edit: true, list: @list), class: 'btn btn-primary' %>
+    <%= link_to "Volver", list_path(@list), class: 'btn btn-default' %></p>
+  </div>
+</footer>

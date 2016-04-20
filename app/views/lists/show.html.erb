@@ -1,24 +1,33 @@
 <h3 class='title'>Lista de la compra: <%= @list.name %></h3>
 <%= hidden_field_tag 'list_id', @list.id %>
 
-<div class='table-responsive'>
-  <table class='table-striped'>
-    <tbody>
-      <% @list.items.each do |item| %>
-      <tr class='item-data col-xs-12 col-sm-6 col-md-4'>
-        <%= hidden_field_tag 'product_id[]', item.product.id %>
-        <td class='col-xs-12'>
-          <label class='item-in-list <%= item.collected ? 'crossed-out' : '' %>'>
-            <%= check_box_tag item.product.id, item.product.name, item.collected, class: 'item_checkbox' %>
-            <%= h item.product.name %>
-          </label>
-        </td>
-        <td class='item-in-list col-xs-1'><%= item.quantity %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<% if @list.items.count == 0 %>
+  <p>No hay productos en la lista de la compra</p>
+<% else %>
+  <div class='table-responsive'>
+    <table class='table-striped'>
+      <tbody>
+        <% @list.items.each do |item| %>
+        <tr class='item-data col-xs-12 col-sm-6 col-md-4'>
+          <%= hidden_field_tag 'product_id[]', item.product.id %>
+          <td class='col-xs-12'>
+            <label class='item-in-list <%= item.collected ? 'crossed-out' : '' %>'>
+              <%= check_box_tag item.product.id, item.product.name, item.collected, class: 'item_checkbox' %>
+              <%= h item.product.name %>
+            </label>
+          </td>
+          <td class='item-in-list col-xs-1'><%= item.quantity %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
 
 <br />
-<%= link_to "Editar lista de la compra", edit_list_path(@list), class: 'btn btn-danger' %>
+
+<footer class="footer navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <p><%= link_to "Editar lista de la compra", edit_list_path(@list), class: 'btn btn-danger' %></p>
+  </div>
+</footer>

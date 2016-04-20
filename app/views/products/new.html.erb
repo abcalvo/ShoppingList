@@ -2,7 +2,7 @@
 
 <%= form_for :product, url: products_path do |f| %>
   <div class="form-group">
-    <%= f.label :name %><br>
+    <%= f.label :name, 'Producto:' %><br>
     <%= f.text_field :name, autofocus: true, autocomplete: :off, class: 'form-control' %>
   </div>
 

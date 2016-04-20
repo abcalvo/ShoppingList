@@ -1,8 +1,12 @@
 <h3 class='title'>Listas de la compra</h3>
-<% @lists.each do |list| %>
-  <div class='list'>
-    <div class='col-xs-12'>
-      <%= link_to list.name, list %>
+<% if @lists.count == 0 %>
+  <p>No hay listas de la compra creadas</p>
+<% else %>
+  <% @lists.each do |list| %>
+    <div class='list'>
+      <div class='col-xs-12'>
+        <%= link_to list.name, list %>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
