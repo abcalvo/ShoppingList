@@ -32,6 +32,25 @@ class ListsController < ApplicationController
     end
   end
 
+  def mark_as_default
+    @list = current_user.lists.find_by_id(params[:id])
+
+    @list.marked_as_default_at = Time.now
+
+    if @list.save
+      respond_to do |format|
+        format.html { redirect_to edit_list_path(@list) }
+        format.json { render json: {status: 'ok'} }
+      end
+    else
+      respond_to do |format|
+        format.html { flash.now[:warning] = 'Error añadiendo artículo a la lista de la compra'
+          redirect_to edit_list_path(@list) }
+        format.json { render json: {status: 'error', message: 'Error añadiendo artículo a la lista de la compra'} }
+      end
+    end
+  end
+
   def create
     @list = List.create_new_list(list_params, current_user)
 

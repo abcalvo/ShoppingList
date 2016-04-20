@@ -6,6 +6,7 @@ class List < ActiveRecord::Base
     list = List.new(list_params)
 
     list.user = owner
+    list.marked_as_default_at = Time.new
 
     return list
   end

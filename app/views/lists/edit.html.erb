@@ -1,4 +1,12 @@
-<h3 class='title'>Editando <%= @list.name %> <%= link_to edit_list_name_path(@list) do %> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span><% end %></h3>
+<h3 class='title'>
+  Editando <%= @list.name %>
+    <%= link_to edit_list_name_path(@list) do %>
+      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+    <% end %>
+    <%= link_to mark_as_default_list_path(@list) do %>
+      <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+    <% end %>
+</h3>
 <%= hidden_field_tag 'list_id', @list.id %>
 <% @products.each do |product| %>
   <% included = @list.items.map(&:product_id).include?(product.id) %>

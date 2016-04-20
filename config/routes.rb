@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'lists/:id/edit_name' => 'lists#edit_name', as: 'edit_list_name'
   post 'lists/:id/edit_name' => 'lists#update_name', as: 'update_list_name'
 
+  get 'lists/:id/mark_as_default' => 'lists#mark_as_default', as: 'mark_as_default_list'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
