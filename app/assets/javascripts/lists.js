@@ -38,6 +38,19 @@ $(document).ready(function() {
     toggleCrossedOutClass(this);
 
     toggleCollected(data);
+
+    if (mustHideCollectedItems()) {
+      hideItem(this);
+    }
+  });
+
+  // SHOW/HIDE COLLECTED ITEMS
+  $('.switch-input').change(function() {
+    if ($(this).prop('checked')) {
+      showCollected();
+    } else {
+      hideCollected();
+    }
   });
 });
 
@@ -144,4 +157,29 @@ function toggleCrossedOutClass(element) {
   var item = $(element).closest('.item-in-list');
 
   $(item).toggleClass('crossed-out');
+}
+
+function mustHideCollectedItems() {
+  return !($('.switch-input').prop('checked'));
+}
+
+function hideCollected() {
+  $('.item-in-list').each(function() {
+    if ($(this).hasClass('crossed-out')) {
+        var item = $(this).closest('.item-data');
+        $(item).hide();
+    }
+  });
+}
+
+function showCollected() {
+  $('.item-in-list').each(function() {
+    var item = $(this).closest('.item-data');
+    $(item).show();
+  });
+}
+
+function hideItem(item) {
+  var data = $(item).closest('.item-data');
+  $(data).hide();
 }

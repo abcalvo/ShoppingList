@@ -22,12 +22,23 @@
       </tbody>
     </table>
   </div>
+
+  <div class="show-crossed-out">
+    Mostrar productos tachados: 
+    <label class="switch switch-green">
+      <input type="checkbox" class="switch-input" checked>
+      <span class="switch-label" data-on="Sí" data-off="No"></span>
+      <span class="switch-handle"></span>
+    </label>
+  </div>
 <% end %>
 
 <br />
 
 <footer class="footer navbar navbar-default navbar-fixed-bottom">
   <div class="container">
-    <p><%= link_to "Editar lista de la compra", edit_list_path(@list), class: 'btn btn-danger' %></p>
+    <div class="col-xs-6">
+      <p><%= link_to "Editar lista de la compra", edit_list_path(@list), class: 'btn btn-danger' %></p>
+    </div>
   </div>
 </footer>
