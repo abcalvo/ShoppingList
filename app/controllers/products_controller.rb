@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @products = current_user.products.order(name: :asc)
+    @products = current_user.products.where(deleted: false).order(name: :asc)
   end
 
   def new
@@ -44,6 +44,19 @@ class ProductsController < ApplicationController
       render 'edit'
     end
 
+  end
+
+  def destroy
+    @product = current_user.products.find_by_id(params[:id])
+    @product.deleted = true
+
+
+    if @product.save
+      redirect_to products_path
+    else
+      flash.now[:warning] = 'Error borrando producto'
+      render 'edit'
+    end
   end
 
   private

@@ -11,4 +11,6 @@
 
   <%= f.submit "Guardar producto", class: 'btn btn-primary' %>
   <%= link_to "Cancelar", :back, {:class=>"btn btn-default"} %>
+  <%= link_to "Delete", product_path(@product), class: 'btn btn-danger',
+            data: { confirm: "Borrar producto. ¿Estás seguro?" }, method: :delete %>
 <% end %>
