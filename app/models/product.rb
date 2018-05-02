@@ -5,6 +5,7 @@ class Product < ActiveRecord::Base
   def self.create_new_product(product_params, owner)
     product = Product.new(product_params)
 
+    product.name = product.name.strip!
     product.user = owner
     product.deleted = false
 
