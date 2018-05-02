@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
       if (params[:product][:from_edit] == 'true')
         redirect_to edit_list_path(params[:product][:list])
       else
-        redirect_to product_path(@product)
+        redirect_to products_path
       end
     else
       flash.now[:warning] = 'Error creando nuevo producto'

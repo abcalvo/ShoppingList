@@ -6,6 +6,7 @@ class Product < ActiveRecord::Base
     product = Product.new(product_params)
 
     product.user = owner
+    product.deleted = false
 
     return product
   end

@@ -12,7 +12,7 @@ class ListsController < ApplicationController
 
   def edit
     @list = current_user.lists.find_by_id(params[:id])
-    @products = current_user.products.order(name: :asc)
+    @products = current_user.products.where(deleted: false).order(name: :asc)
   end
 
   def edit_name
